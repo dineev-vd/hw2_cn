@@ -1,0 +1,27 @@
+.project-page {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: 10px;
+}
+
+.project-page_nav {
+    display: flex;
+    margin-bottom: -1px;
+}
+
+.project-page_nav > :not(:first-child){
+    margin-left: 10px;
+}
+
+.project-page_nav > :first-child {
+    margin-left: 20px;
+}
+
+.project-page_content {
+    border: 1px solid gray;
+    border-radius: 10px;
+    background-color: white;
+    padding: 20px;
+    flex: 1 1 auto;    
+}

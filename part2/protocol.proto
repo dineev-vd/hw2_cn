@@ -1,0 +1,75 @@
+syntax = "proto3";
+
+
+message Hotel {
+     int32 hotelId = 1;
+     string name = 2;
+     int32 maxPrice = 3;
+     int32 minPrice = 4;
+     bool wifi = 5;
+     bool breakfast = 6;
+     string city = 7;
+}
+
+message Room {
+     int32 roomId = 1;
+
+    enum RoomType {
+        SINGLE = 0;
+        DOUBLE = 1;
+    }
+
+     RoomType roomType = 2;
+     int32 pricePerNight = 3;
+}
+
+message GetHotelList {
+     int64 fromDate = 1;
+     int64 toDate = 2;
+     string city = 3;
+     int32 maxPrice = 4;
+}
+
+message GetHotelListResponse {
+    repeated Hotel hotelList = 1;
+}
+
+message GetRoomList {
+     int64 fromDate = 1;
+     int64 toDate = 2;
+     int32 hotelId = 3;
+}
+
+message GetRoomListResponse {
+    repeated Room roomList = 1;
+}
+
+message BookHotel {
+     int32 hotelId = 1;
+     int64 fromDate = 2;
+     int64 toDate = 3;
+     string name = 4;
+     string surname = 5;
+     string cardNumber = 6;
+     int32 cvv = 7;
+}
+
+message BookHotelResponse {
+    enum MessageStatus {
+        OK = 0;
+        FAIL = 1;
+    }
+
+     MessageStatus messageStatus = 1;
+     string message = 2;
+}
+
+message AnyMessage {
+     optional GetHotelList hotelList = 1;
+     optional GetRoomList roomList = 2;
+     optional BookHotel bookHotel = 3;
+
+     optional GetHotelListResponse hotelListReponse = 4;
+     optional GetRoomListResponse roomListResponse = 5;
+     optional BookHotelResponse bookHotelResponse = 6;
+}
